@@ -10,3 +10,6 @@ I made a **university page** using **Logo**,**Images**,**Link** and a **Table**.
 
 **Day 3:**
 Today I learned about **HTML Forms**, **Input Fields**, **Labels**, **Buttons**, and **Semantic HTM**L. I built a Student Registration Form that includes **text fields**, **email**, **password**, **phone number**, **date of birth**, **gender** **selection**, **course selection**, **address**, and a **submit button**.
+
+**Day 4:**
+ Today I learned about **CSS Colors**, **Fonts**, **Backgrounds**, and **Borders**. I also designed a **Student Registration** **Form** using **CSS** by **adding colors**, **background images, borders, rounded input fields**, and a **professional layout**.
