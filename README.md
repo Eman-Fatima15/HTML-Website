@@ -13,3 +13,6 @@ Today I learned about **HTML Forms**, **Input Fields**, **Labels**, **Buttons**,
 
 **Day 4:**
  Today I learned about **CSS Colors**, **Fonts**, **Backgrounds**, and **Borders**. I also designed a **Student Registration** **Form** using **CSS** by **adding colors**, **background images, borders, rounded input fields**, and a **professional layout**.
+ 
+**Day 5:**
+Today I learned about **Margin, Padding, Width**, and **Height** in**CSS**. I understood how**margin** creates space outside an **element**, **padding** adds space inside an **element**, and **width** and **height** control the size of an element. I practiced these properties by improving my **student registration form** and making the layout **cleaner** and more **organized**.
