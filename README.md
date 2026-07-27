@@ -16,3 +16,6 @@ Today I learned about **HTML Forms**, **Input Fields**, **Labels**, **Buttons**,
  
 **Day 5:**
 Today I learned about **Margin, Padding, Width**, and **Height** in**CSS**. I understood how**margin** creates space outside an **element**, **padding** adds space inside an **element**, and **width** and **height** control the size of an element. I practiced these properties by improving my **student registration form** and making the layout **cleaner** and more **organized**.
+
+**Day 6:**
+Today I learned about **Display** and **Flexbox** in **CSS**. I understood the difference between **block, inline, inline-block,** and **flex display properties**. I also learned how to use **justify-content, align-items,** and **flex-direction** to **arrange elements** and **create clean, responsive layouts**. I practiced these concepts by creating different **box layouts** using **Flexbox**.
