@@ -19,3 +19,6 @@ Today I learned about **Margin, Padding, Width**, and **Height** in**CSS**. I un
 
 **Day 6:**
 Today I learned about **Display** and **Flexbox** in **CSS**. I understood the difference between **block, inline, inline-block,** and **flex display properties**. I also learned how to use **justify-content, align-items,** and **flex-direction** to **arrange elements** and **create clean, responsive layouts**. I practiced these concepts by creating different **box layouts** using **Flexbox**.
+
+**Day 7**
+Today I learned about **Hover Effects, Buttons,** and **Responsive Design** in **CSS.** I practiced creating attractive **buttons**, changing styles using the :hover pseudo-class, and making web pages responsive with** Media Queries**. I also improved my Student Registration Form to make it more **professional**, user-friendly, and suitable for both**mobile** and **laptop screen**s.
