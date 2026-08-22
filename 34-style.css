@@ -902,56 +902,47 @@ color: #8d6cff;
         width: 100%;
         min-height: 70px;
         padding: 0 10px;
-        gap: 6px;
-        overflow: hidden;
-    }
-
-    .logo {
-        flex-shrink: 0;
+        gap: 8px;
     }
 
     .logo img {
         width: 65px;
-        margin-left: 0;
     }
 
     .logo a {
         display: none;
     }
-
     .navbar {
         flex: 1;
         min-width: 0;
-        max-width: none;
         display: flex;
-        gap: 0;
+        gap: 2px;
         padding: 3px;
-        overflow-x: auto;
+        overflow-x: auto; 
         overflow-y: hidden;
-        white-space: nowrap;
+        white-space: nowrap; 
         scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .navbar::-webkit-scrollbar {
-        display: none;
+        display: none; /
     }
 
     .navbar a {
-        flex-shrink: 0;
-        padding: 7px 7px;
-        font-size: 9px;
+        flex-shrink: 0; 
+        padding: 8px 12px;
+        font-size: 12px;
         white-space: nowrap;
     }
 
     .header-btn {
-        display: inline-block;
         flex-shrink: 0;
-        padding: 8px 11px;
-        margin-right: 0;
-        border-radius: 30px;
-        font-size: 9px;
+        padding: 8px 12px;
+        font-size: 10px;
         white-space: nowrap;
     }
+
 
     .hero {
         min-height: 600px;
