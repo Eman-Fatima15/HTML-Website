@@ -977,40 +977,46 @@ color: #8d6cff;
     .logo a {
         display: none;
     }
-
-   .navbar {
+    .navbar { 
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(15,15,20,0.95);
+    background: rgba(10,10,15,0.98);
     backdrop-filter: blur(10px);
-    padding: 10px 0;
+    padding: 8px 0;
   }
-    .nav-container {
+
+  .nav-container { 
     display: flex;
-    gap: 15px;
-    overflow-x: auto;
+    gap: 10px;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; 
     white-space: nowrap;
-    padding: 8px 15px;
-    scrollbar-width: none;
+    padding: 8px 12px;
+    justify-content: flex-start;
+    scrollbar-width: none; 
   }
   .nav-container::-webkit-scrollbar {
-    display: none;
+    display: none; 
   }
-  .nav-container a:nth-child(6),
-  .nav-container a:nth-child(7) {
-    opacity: 0;
-    width: 0;
-    padding: 0;
-    margin: 0;
-    transition: all 0.3s ease;
+  .nav-container a {
+    flex-shrink: 0; 
+    scroll-snap-align: start;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.05);
+    transition: background 0.3s;
   }
-  body.scrolled .nav-container a:nth-child(6),
-  body.scrolled .nav-container a:nth-child(7) {
-    opacity: 1;
-    width: auto;
-    padding: 8px 12px;
-    margin: 0 5px;
+  
+  .nav-container a:last-child { 
+    background: rgba(120, 87, 255, 0.3);
+    border: 1px solid rgba(120, 87, 255, 0.5);
+  }
+
+  .nav-container a:active {
+    background: rgba(0, 212, 255, 0.3);
   }
     .header-btn {
         display: inline-block;
