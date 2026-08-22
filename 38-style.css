@@ -179,18 +179,17 @@ a {
     border: 1px solid white;
 }
 .hero {
+    position: relative;
     width: 100%;
     height: 500px;
     overflow: hidden;
-    position: relative;
 }
-
 .hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform:scale(1.1);
     display: block;
+    transform: scale(1.1);
 }
 .card-container {
   display: grid;
@@ -817,38 +816,35 @@ a {
 
     .main-header {
         width: 100%;
-        min-height: auto;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 5px;
-        padding: 8px 7px;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px;
     }
 
     .logo {
+        min-width: auto;
         width: 70px;
-        min-width: 70px;
         height: 42px;
         padding: 0;
-        flex-shrink: 0;
     }
 
     .logo img {
-        width: 68px;
-        max-height: 38px;
-        object-fit: contain;
+        width: 70px;
+        max-height: 40px;
     }
 
     .location {
-        min-width: 0;
         flex: 1;
-        padding: 4px;
+        min-width: 0;
+        padding: 5px;
         gap: 4px;
-        flex-shrink: 1;
     }
 
     .location i {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .location span {
@@ -857,39 +853,32 @@ a {
 
     .location strong {
         font-size: 11px;
-        white-space: nowrap;
     }
 
-    .language,
-    .orders {
+    .language {
         display: none;
     }
 
     .account {
-        min-width: 92px;
+        min-width: auto;
         padding: 3px;
-        flex-shrink: 0;
     }
 
     .account span {
         font-size: 9px;
-        white-space: nowrap;
     }
 
     .account strong {
         font-size: 11px;
-        white-space: nowrap;
     }
 
-    .account i {
-        font-size: 8px;
+    .orders {
+        display: none;
     }
 
     .cart {
         min-width: 45px;
-        width: 45px;
-        padding: 2px;
-        flex-shrink: 0;
+        padding: 3px;
     }
 
     .cart i {
@@ -897,80 +886,94 @@ a {
     }
 
     .cart span {
-        left: 13px;
+        left: 14px;
         top: -2px;
         font-size: 10px;
     }
 
     .cart strong {
         font-size: 10px;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .search-box {
         order: 10;
         flex: 0 0 100%;
         width: 100%;
-        height: 42px;
-        margin-top: 4px;
+        height: 40px;
     }
 
     .search-box select {
         width: 45px;
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .search-box input {
         min-width: 0;
-        width: 100%;
-        font-size: 14px;
+        font-size: 13px;
         padding: 0 8px;
     }
 
     .search-box button {
-        width: 48px;
-        font-size: 19px;
+        width: 45px;
+        font-size: 17px;
     }
+
     .navbar {
         width: 100%;
         height: 42px;
         padding: 0 8px;
         overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
     }
+
+    .nav-left {
+        flex-shrink: 0;
+    }
+
     .nav-left a {
         padding: 10px 7px;
         font-size: 12px;
+        white-space: nowrap;
     }
+
     .nav-links {
-        gap: 15px;
-        margin-left: 3px;
+        flex-shrink: 0;
+        gap: 18px;
+        margin-left: 5px;
+        white-space: nowrap;
     }
+
     .nav-links a {
         font-size: 12px;
         padding: 12px 0;
+        white-space: nowrap;
     }
+
     .hero {
-        height:300px;
-        width:100px;
-        overflow:hidden;
-        position:relative;
-        display:block;
+        width: 100%;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
     }
+
     .hero img {
-        transform: none;
+        width: 100%;
+        height: 100%;
+        display: block;
         object-fit: cover;
-        height:155px;
-        min-width:100px;
-        width:100px;
-        object-position:center;
-        display:block;
+        object-position: center;
+        transform: none;
     }
+
     .card-container {
         grid-template-columns: 1fr;
         margin-top: 15px;
         gap: 15px;
         padding: 0 12px;
     }
+
     .card {
         height: auto;
         min-height: 390px;
