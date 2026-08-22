@@ -986,38 +986,25 @@ color: #8d6cff;
     padding: 8px 0;
   }
 
-  .nav-container { 
-    display: flex;
-    gap: 10px;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
-    -webkit-overflow-scrolling: touch; 
-    white-space: nowrap;
-    padding: 8px 12px;
-    justify-content: flex-start;
-    scrollbar-width: none; 
-  }
-  .nav-container::-webkit-scrollbar {
-    display: none; 
-  }
-  .nav-container a {
-    flex-shrink: 0; 
-    scroll-snap-align: start;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.05);
-    transition: background 0.3s;
-  }
-  
-  .nav-container a:last-child { 
-    background: rgba(120, 87, 255, 0.3);
-    border: 1px solid rgba(120, 87, 255, 0.5);
-  }
+  .nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 20px;
+        width: 100%;
+        padding: 10px 5px;
+        scrollbar-width: none;
+    }
 
-  .nav-container a:active {
-    background: rgba(0, 212, 255, 0.3);
-  }
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        flex-shrink: 0;
+        font-size: 13px;
+    }
     .header-btn {
         display: inline-block;
         padding: 9px 18px;
