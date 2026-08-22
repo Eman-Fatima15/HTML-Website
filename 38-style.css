@@ -957,9 +957,10 @@ a {
     .hero img {
         transform: none;
         object-fit: cover;
-        height:100px;
+        height:155px;
+        min-width:100px;
         width:100px;
-        object-position:center top;
+        object-position:center;
         display:block;
     }
     .card-container {
