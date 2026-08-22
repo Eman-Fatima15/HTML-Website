@@ -813,84 +813,122 @@ a {
     body {
         overflow-x: hidden;
     }
+
     .main-header {
         width: 100%;
+        min-height: auto;
         display: flex;
-        flex-wrap:wrap;
-        gap: 8px;
-        padding: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 7px;
     }
+
     .logo {
-        min-width: 75px;
-        height: 45px;
+        width: 70px;
+        min-width: 70px;
+        height: 42px;
+        padding: 0;
+        flex-shrink: 0;
     }
+
     .logo img {
-        width: 75px;
-        max-height: 40px;
+        width: 68px;
+        max-height: 38px;
+        object-fit: contain;
     }
+
     .location {
         min-width: 0;
-        padding: 5px;
+        flex: 1;
+        padding: 4px;
         gap: 4px;
+        flex-shrink: 1;
     }
+
     .location i {
-        font-size: 17px;
+        font-size: 18px;
     }
+
     .location span {
         font-size: 9px;
     }
+
     .location strong {
         font-size: 11px;
+        white-space: nowrap;
     }
-    .language {
-        display: none;
-    }
-    .account {
-        min-width: 0;
-        padding: 3px;
-    }
-    .account span {
-        font-size: 9px;
-    }
-    .account strong {
-        font-size: 11px;
-    }
+
+    .language,
     .orders {
         display: none;
     }
-    .cart {
-        min-width: 50px;
+
+    .account {
+        min-width: 92px;
         padding: 3px;
+        flex-shrink: 0;
     }
+
+    .account span {
+        font-size: 9px;
+        white-space: nowrap;
+    }
+
+    .account strong {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .account i {
+        font-size: 8px;
+    }
+
+    .cart {
+        min-width: 45px;
+        width: 45px;
+        padding: 2px;
+        flex-shrink: 0;
+    }
+
     .cart i {
         font-size: 25px;
     }
+
     .cart span {
-        left: 16px;
+        left: 13px;
         top: -2px;
-        font-size: 11px;
+        font-size: 10px;
     }
+
     .cart strong {
-        font-size: 11px;
-        margin-top: 12px;
+        font-size: 10px;
+        margin-top: 8px;
     }
+
     .search-box {
-        margin-top:5px;
-        order: 99;
+        order: 10;
+        flex: 0 0 100%;
         width: 100%;
-        height: 40px;
+        height: 42px;
+        margin-top: 4px;
     }
+
     .search-box select {
-        width: 48px;
+        width: 45px;
         font-size: 11px;
     }
+
     .search-box input {
-        font-size: 13px;
+        min-width: 0;
+        width: 100%;
+        font-size: 14px;
         padding: 0 8px;
     }
+
     .search-box button {
-        width: 45px;
-        font-size: 17px;
+        width: 48px;
+        font-size: 19px;
     }
     .navbar {
         width: 100%;
@@ -911,14 +949,18 @@ a {
         padding: 12px 0;
     }
     .hero {
-        height: auto;
-        min-height:200px;
+        height: 155px;
+        width:100px;
+        overflow:hidden;
+        position:relative;
     }
     .hero img {
-        transform: scale(1.05);
+        transform: none;
         object-fit: cover;
-        height:auto;
-        max-height:250px;
+        height:100px;
+        width:100px;
+        object-position:center top;
+        display:block;
     }
     .card-container {
         grid-template-columns: 1fr;
