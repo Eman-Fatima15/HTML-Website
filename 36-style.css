@@ -626,15 +626,29 @@ a {
     .property-section {
         padding: 25px 15px;
     }
-
     .section-heading {
-        margin-bottom: 18px;
-        align-items: center;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0 16px;
+  }
 
-    .section-heading h2 {
-        font-size: 13px;
-    }
+  .section-heading h2 {
+    font-size: 1.35rem; 
+    line-height: 1.3;
+    margin: 0;
+    flex: 1;
+  }
+
+  .section-heading a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    margin-top: 2px; 
+    text-decoration: none;
+  }
 
     .section-heading p {
         font-size: 11px;
