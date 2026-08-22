@@ -986,9 +986,10 @@ color: #8d6cff;
     backdrop-filter: blur(10px);
     padding: 10px 0;
   }
+    .nav-container {
     display: flex;
     gap: 15px;
-    overflow-x: auto; /* side scroll */
+    overflow-x: auto;
     white-space: nowrap;
     padding: 8px 15px;
     scrollbar-width: none;
