@@ -978,28 +978,30 @@ color: #8d6cff;
         display: none;
     }
     .navbar {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 20px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        padding: 10px 5px;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-    }
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+   }
 
-    .navbar::-webkit-scrollbar {
-        display: none;
-    }
+   .navbar::-webkit-scrollbar {
+    display: none;
+   }
 
-    .navbar a {
-        flex: 0 0 auto;
-        white-space: nowrap;
-        font-size: 13px;
+   .navbar a {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
     }
     .header-btn {
         display: inline-block;
