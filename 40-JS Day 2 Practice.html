@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result</title>
+</head>
+<body>
+    <h1> Student Result</h1>
+    <input type="text" id="name"placeholder="Enter your name">
+    <input type="number" id="age"placeholder="Enter your age">
+    <input type="number" id="mark1"placeholder="Subject 1 marks">
+    <input type="number" id="mark2"placeholder="Subject 2 marks">
+    <input type="number" id="mark3"placeholder="Subject 3 marks">
+    <button
+    onclick="showResult()">Calculate Result</button>
+    <div id="output"></div>
+    <script>
+        function calculateTotal(marks) {
+            let total=0;
+            for(let i=0;i<marks.length;i++){
+                total=total + marks[i];
+            }
+               return total;
+        }
+        function showResult() {
+            let studentName=
+            document.getElementById("name").value;
+            const age=
+            document.getElementById("age").value;
+            let mark1=
+            Number(document.getElementById("mark1").value);
+            let mark2=
+            Number(document.getElementById("mark2").value);
+            let mark3=
+            Number(document.getElementById("mark3").value);
+            let marks=[mark1,mark2,mark3];
+            let totalMarks=calculateTotal(marks);
+            let percentage=totalMarks/marks.length;
+            let result;
+            if(percentage>=50){
+                result="pass";
+            }
+            else{
+                result="Fail";
+        }
+          let grade;
+          switch(true){
+            case percentage >=80:grade="A";
+            break;
+            case percentage >=70:grade="B";
+            break;
+            case percentage >=60:grade="C";
+            break;
+            case percentage >=50:grade="D";
+            break;
+            default:
+                grade="F";
+       }
+         let count=1;
+         let checking="";
+         while (count<=3){
+            checking= checking + "checking result....<br>";
+            count++;
+         }
+          document.getElementById("output").innerHTML =
+        "<h2>Result</h2>" +
+        "Name: " + studentName + "<br>" +
+        "Age: " + age + "<br>" +
+        "Total Marks: " + totalMarks + "<br>" +
+        "Percentage: " + percentage + "%<br>" +
+        "Result: " + result + "<br>" +
+        "Grade: " + grade + "<br><br>" +
+        checking;
+    }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border: 2px solid black;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        #message {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>JavaScript Practice</h1>
+
+        <h2 id="message">Hello JavaScript!</h2>
+
+        <p id="name"></p>
+        <p id="age"></p>
+        <p id="marks"></p>
+        <p id="percentage"></p>
+        <p id="result"></p>
+
+        <button onclick="showInfo()">Show Information</button>
+
+        <button onclick="changeColor()">Change Text Color</button>
+
+        <button onclick="changeBackground()">Change Background</button>
+
+        <button onclick="increaseNumber()">Increase Number</button>
+
+        <h2 id="number">0</h2>
+
+    </div>
+
+    <script>
+
+        const studentName = "Eman";
+        let age = 18;
+        let marks = 95;
+        let totalMarks = 100;
+        let percentage = (marks / totalMarks) * 100;
+        let passed = marks >= 50;
+
+        function showInfo() {
+            document.getElementById("name").textContent =
+                "Name: " + studentName;
+
+            document.getElementById("age").textContent =
+                "Age: " + age;
+
+            document.getElementById("marks").textContent =
+                "Marks: " + marks;
+
+            document.getElementById("percentage").textContent =
+                "Percentage: " + percentage + "%";
+
+            document.getElementById("result").textContent =
+                "Passed: " + passed;
+        }
+
+        function changeColor() {
+            document.getElementById("message").style.color = "red";
+        }
+
+        function changeBackground() {
+            document.body.style.backgroundColor = "lightblue";
+        }
+
+        let number = 0;
+
+        function increaseNumber() {
+            number++;
+            document.getElementById("number").textContent = number;
+        }
+
+    </script>
+
+</body>
+</html>

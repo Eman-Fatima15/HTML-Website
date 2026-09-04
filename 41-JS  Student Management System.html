@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #dbeafe);
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #172554;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .section-title {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #dbe3ef;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+            background: #f8fafc;
+        }
+
+        .input-group input:focus {
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .student-name {
+            grid-column: 1 / -1;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        .search-box {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .search-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-area input {
+            flex: 1;
+            padding: 13px 15px;
+            border: 1px solid #dbe3ef;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-area button {
+            flex: 0 0 120px;
+        }
+
+        #result {
+            margin-top: 30px;
+        }
+
+        .success {
+            padding: 15px;
+            background: #ecfdf5;
+            color: #047857;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .student-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+
+        .student-card h3 {
+            color: #172554;
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .result-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .result-box span {
+            display: block;
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .result-box strong {
+            color: #2563eb;
+            font-size: 18px;
+        }
+
+        .pass {
+            color: #059669 !important;
+        }
+
+        .fail {
+            color: #dc2626 !important;
+        }
+
+        .message {
+            text-align: center;
+            padding: 18px;
+            background: #fef2f2;
+            color: #dc2626;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 25px 18px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-name {
+                grid-column: auto;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .search-area {
+                flex-direction: column;
+            }
+
+            .search-area button {
+                flex: auto;
+                width: 100%;
+            }
+
+            .result-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Student Management System</h1>
+            <p>Manage student records and calculate academic results</p>
+        </div>
+
+        <h2 class="section-title">Student Information</h2>
+
+        <div class="form-grid">
+
+            <div class="input-group student-name">
+                <input type="text" id="name" placeholder="Enter Student Name">
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="english" placeholder="English Marks">
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="math" placeholder="Mathematics Marks">
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="computer" placeholder="Computer Marks">
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="physics" placeholder="Physics Marks">
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="chemistry" placeholder="Chemistry Marks">
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button onclick="addStudent()">Add Student</button>
+            <button onclick="showStudents()">Show All Students</button>
+        </div>
+
+        <div class="search-box">
+            <h2 class="section-title">Search Student</h2>
+
+            <div class="search-area">
+                <input type="text" id="search" placeholder="Enter student name">
+                <button onclick="searchStudent()">Search</button>
+            </div>
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        let students = [];
+
+        const calculateTotal = marks =>
+            marks.reduce((total, mark) => total + mark, 0);
+
+        function getGrade(percentage) {
+            switch (true) {
+                case percentage >= 80:
+                    return "A";
+                case percentage >= 70:
+                    return "B";
+                case percentage >= 60:
+                    return "C";
+                case percentage >= 50:
+                    return "D";
+                default:
+                    return "F";
+            }
+        }
+
+        function addStudent() {
+            try {
+                let name = document.getElementById("name").value.trim();
+
+                let marks = [
+                    Number(document.getElementById("english").value),
+                    Number(document.getElementById("math").value),
+                    Number(document.getElementById("computer").value),
+                    Number(document.getElementById("physics").value),
+                    Number(document.getElementById("chemistry").value)
+                ];
+
+                if (name === "") {
+                    throw new Error("Please enter student name.");
+                }
+
+                if (marks.some(mark => mark < 0 || mark > 100)) {
+                    throw new Error("Marks must be between 0 and 100.");
+                }
+
+                let total = calculateTotal(marks);
+                let percentage = total / marks.length;
+
+                let student = {
+                    name: name,
+                    result: {
+                        marks: marks,
+                        total: total,
+                        percentage: percentage,
+                        grade: getGrade(percentage),
+                        status: percentage >= 50 ? "Pass" : "Fail"
+                    }
+                };
+
+                students.push(student);
+
+                document.getElementById("result").innerHTML =
+                    '<div class="success">Student added successfully!</div>';
+
+            } catch (error) {
+                document.getElementById("result").innerHTML =
+                    '<div class="message">' + error.message + '</div>';
+            }
+        }
+
+        function showStudents() {
+            let output = "";
+
+            if (students.length === 0) {
+                output = '<div class="message">No students found.</div>';
+            }
+
+            for (let i = 0; i < students.length; i++) {
+                let student = students[i];
+
+                output +=
+                    '<div class="student-card">' +
+                    '<h3>' + student.name + '</h3>' +
+                    '<div class="result-grid">' +
+                    '<div class="result-box"><span>Total Marks</span><strong>' +
+                    student.result.total + '/500</strong></div>' +
+                    '<div class="result-box"><span>Percentage</span><strong>' +
+                    student.result.percentage + '%</strong></div>' +
+                    '<div class="result-box"><span>Grade</span><strong>' +
+                    student.result.grade + '</strong></div>' +
+                    '<div class="result-box"><span>Status</span><strong class="' +
+                    (student.result.status === "Pass" ? "pass" : "fail") + '">' +
+                    student.result.status + '</strong></div>' +
+                    '</div>' +
+                    '</div>';
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+
+        function searchStudent() {
+            let search = document.getElementById("search").value
+                .trim()
+                .toLowerCase();
+
+            let student = students.find(
+                student => student.name.toLowerCase() === search
+            );
+
+            if (student) {
+                document.getElementById("result").innerHTML =
+                    '<div class="student-card">' +
+                    '<h3>' + student.name + '</h3>' +
+                    '<div class="result-grid">' +
+                    '<div class="result-box"><span>Total Marks</span><strong>' +
+                    student.result.total + '/500</strong></div>' +
+                    '<div class="result-box"><span>Percentage</span><strong>' +
+                    student.result.percentage + '%</strong></div>' +
+                    '<div class="result-box"><span>Grade</span><strong>' +
+                    student.result.grade + '</strong></div>' +
+                    '<div class="result-box"><span>Status</span><strong class="' +
+                    (student.result.status === "Pass" ? "pass" : "fail") + '">' +
+                    student.result.status + '</strong></div>' +
+                    '</div>' +
+                    '</div>';
+            } else {
+                document.getElementById("result").innerHTML =
+                    '<div class="message">Student not found.</div>';
+            }
+        }
+    </script>
+
+</body>
+</html>

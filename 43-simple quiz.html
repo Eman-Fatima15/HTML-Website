@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #dbeafe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .question {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .question h2 {
+            color: #172554;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            display: block;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 1px solid #dbe3ef;
+            border-radius: 9px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .option:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        .result-card {
+            text-align: center;
+            background: #eff6ff;
+            padding: 22px;
+            border-radius: 12px;
+        }
+
+        .result-card h2 {
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .result-card p {
+            color: #475569;
+            margin: 6px 0;
+        }
+
+        .score {
+            font-size: 28px;
+            color: #2563eb !important;
+            font-weight: bold;
+        }
+
+        .error {
+            padding: 15px;
+            text-align: center;
+            background: #fef2f2;
+            color: #dc2626;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+
+        <div class="header">
+            <h1>JavaScript Quiz</h1>
+            <p>Test your JavaScript knowledge</p>
+        </div>
+
+        <div id="quiz"></div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is JavaScript?",
+                options: [
+                    "Programming Language",
+                    "Database",
+                    "Operating System",
+                    "Browser"
+                ],
+                answer: "Programming Language"
+            },
+            {
+                question: "Which keyword is used to declare a variable?",
+                options: [
+                    "var",
+                    "let",
+                    "Both var and let",
+                    "function"
+                ],
+                answer: "Both var and let"
+            },
+            {
+                question: "Which symbol is used for addition?",
+                options: [
+                    "*",
+                    "-",
+                    "+",
+                    "/"
+                ],
+                answer: "+"
+            },
+            {
+                question: "Which method adds an item to an array?",
+                options: [
+                    "push()",
+                    "pop()",
+                    "shift()",
+                    "find()"
+                ],
+                answer: "push()"
+            },
+            {
+                question: "Which keyword is used to create a function?",
+                options: [
+                    "function",
+                    "method",
+                    "create",
+                    "def"
+                ],
+                answer: "function"
+            }
+        ];
+
+        function displayQuiz() {
+            let output = "";
+
+            questions.forEach((item, index) => {
+                output +=
+                    '<div class="question">' +
+                    '<h2>' + (index + 1) + '. ' + item.question + '</h2>';
+
+                item.options.forEach(option => {
+                    output +=
+                        '<label class="option">' +
+                        '<input type="radio" name="question' + index +
+                        '" value="' + option + '">' +
+                        option +
+                        '</label>';
+                });
+
+                output += '</div>';
+            });
+
+            document.getElementById("quiz").innerHTML = output;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            let answered = true;
+
+            questions.forEach((item, index) => {
+                let selected = document.querySelector(
+                    'input[name="question' + index + '"]:checked'
+                );
+
+                if (!selected) {
+                    answered = false;
+                } else if (selected.value === item.answer) {
+                    score++;
+                }
+            });
+
+            if (!answered) {
+                document.getElementById("result").innerHTML =
+                    '<div class="error">Please answer all questions.</div>';
+                return;
+            }
+
+            let percentage = (score / questions.length) * 100;
+
+            document.getElementById("result").innerHTML =
+                '<div class="result-card">' +
+                '<h2>Quiz Completed!</h2>' +
+                '<p class="score">' + score + '/' +
+                questions.length + '</p>' +
+                '<p>Percentage: ' + percentage + '%</p>' +
+                '<p>Correct Answers: ' + score + '</p>' +
+                '<p>Wrong Answers: ' +
+                (questions.length - score) + '</p>' +
+                '</div>';
+        }
+
+        displayQuiz();
+    </script>
+
+</body>
+</html>
