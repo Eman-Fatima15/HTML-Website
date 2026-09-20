@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management App</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #111827, #1e3a8a);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 15px;
+    color: #dbeafe;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 35px auto;
+}
+
+.form-section,
+.search-section {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+    border: 1px solid #e2e8f0;
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 22px;
+    color: #111827;
+    margin-bottom: 22px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+.input-group input,
+.search-section input {
+    padding: 14px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+.input-group input:focus,
+.search-section input:focus {
+    border-color: #2563eb;
+}
+
+.add-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #1e3a8a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #172554;
+}
+
+.error-message {
+    display: none;
+    color: #dc2626;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    margin-top: 13px;
+    color: #15803d;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.success-message.show {
+    display: block;
+}
+
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-title {
+    color: #111827;
+    font-size: 19px;
+    margin-bottom: 13px;
+}
+
+.search-section input {
+    width: 100%;
+}
+
+.students-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.students-header h2 {
+    color: #111827;
+    font-size: 24px;
+}
+
+#studentCount {
+    background: #dbeafe;
+    color: #1e3a8a;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.students-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.student-card {
+    background: white;
+    padding: 23px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.07);
+}
+
+.student-top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.student-icon {
+    width: 50px;
+    height: 50px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.student-top h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    word-break: break-word;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 9px;
+}
+
+.info-label {
+    color: #64748b;
+}
+
+.info-value {
+    font-weight: bold;
+    color: #1e3a8a;
+    text-align: right;
+    word-break: break-word;
+}
+
+.gpa {
+    background: #dbeafe;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.delete-btn {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 9px;
+    background: #fff1f2;
+    color: #dc2626;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    color: white;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: white;
+    padding: 50px 20px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.empty-message h3 {
+    margin-bottom: 9px;
+    color: #334155;
+    font-size: 20px;
+}
+
+@media (max-width: 950px) {
+    .students-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 35px 15px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .students-container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-section,
+    .search-section {
+        padding: 21px;
+    }
+
+    .students-header h2 {
+        font-size: 21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎓 Student Management App</h1>
+<p>Add, search and manage student information easily</p>
+</header>
+
+<main class="container">
+
+<section class="form-section">
+<h2 class="section-title">➕ Add New Student</h2>
+
+<form id="studentForm" novalidate>
+
+<div class="form-grid">
+
+<div class="input-group">
+<label for="studentName">Student Name</label>
+<input type="text" id="studentName" placeholder="Enter student name">
+</div>
+
+<div class="input-group">
+<label for="studentAge">Age</label>
+<input type="number" id="studentAge" placeholder="Enter age">
+</div>
+
+<div class="input-group">
+<label for="university">University</label>
+<input type="text" id="university" placeholder="Enter university">
+</div>
+
+<div class="input-group">
+<label for="gpa">GPA</label>
+<input type="number" id="gpa" step="0.01" placeholder="Enter GPA">
+</div>
+
+</div>
+
+<button type="submit" class="add-btn">Add Student</button>
+
+<div id="formError" class="error-message"></div>
+<div id="successMessage" class="success-message">✓ Student added successfully!</div>
+
+</form>
+</section>
+
+<section class="search-section">
+<h3 class="search-title">🔍 Search Student</h3>
+<input type="text" id="searchInput" placeholder="Search student by name...">
+</section>
+
+<section>
+
+<div class="students-header">
+<h2>Students</h2>
+<span id="studentCount">0 Students</span>
+</div>
+
+<div id="studentsContainer" class="students-container">
+
+<div class="empty-message">
+<h3>No Students Added</h3>
+<p>Add a student using the form above.</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<script>
+const studentForm = document.getElementById("studentForm");
+const studentName = document.getElementById("studentName");
+const studentAge = document.getElementById("studentAge");
+const university = document.getElementById("university");
+const gpa = document.getElementById("gpa");
+const searchInput = document.getElementById("searchInput");
+const studentsContainer = document.getElementById("studentsContainer");
+const studentCount = document.getElementById("studentCount");
+const formError = document.getElementById("formError");
+const successMessage = document.getElementById("successMessage");
+
+let students = [];
+
+function showError(message) {
+    formError.textContent = message;
+    formError.classList.add("show");
+}
+
+function hideError() {
+    formError.textContent = "";
+    formError.classList.remove("show");
+}
+
+studentForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = studentName.value.trim();
+    const age = studentAge.value.trim();
+    const universityName = university.value.trim();
+    const studentGPA = gpa.value.trim();
+
+    hideError();
+    successMessage.classList.remove("show");
+
+    if (!name || !age || !universityName || !studentGPA) {
+        showError("Please fill in all fields.");
+        return;
+    }
+
+    if (Number(age) < 10 || Number(age) > 100) {
+        showError(" Age must be between 10 and 100.");
+        return;
+    }
+
+    if (Number(studentGPA) < 0 || Number(studentGPA) > 4) {
+        showError(" GPA must be between 0 and 4.");
+        return;
+    }
+
+    students.push({
+        id: Date.now(),
+        name,
+        age,
+        university: universityName,
+        gpa: studentGPA
+    });
+
+    studentForm.reset();
+    displayStudents(students);
+    successMessage.classList.add("show");
+
+    setTimeout(function() {
+        successMessage.classList.remove("show");
+    }, 3000);
+});
+
+[studentName, university].forEach(function(input) {
+    input.addEventListener("input", function() {
+        if (input.value.trim() !== "") {
+            hideError();
+        }
+    });
+});
+
+studentAge.addEventListener("input", function() {
+    const age = studentAge.value.trim();
+
+    if (age !== "" && Number(age) >= 10 && Number(age) <= 100) {
+        hideError();
+    }
+});
+
+gpa.addEventListener("input", function() {
+    const value = gpa.value.trim();
+
+    if (value !== "" && Number(value) >= 0 && Number(value) <= 4) {
+        hideError();
+    }
+});
+
+function displayStudents(studentList) {
+    studentsContainer.innerHTML = "";
+
+    studentCount.textContent =
+        `${studentList.length} Student${studentList.length !== 1 ? "s" : ""}`;
+
+    if (studentList.length === 0) {
+        studentsContainer.innerHTML = `
+            <div class="empty-message">
+                <h3>No Students Found</h3>
+                <p>Try adding a student or search with another name.</p>
+            </div>
+        `;
+        return;
+    }
+
+    studentList.forEach(function(student) {
+        const card = document.createElement("div");
+
+        card.classList.add("student-card");
+
+        card.innerHTML = `
+            <div class="student-top">
+                <div class="student-icon">
+                    ${student.name.charAt(0).toUpperCase()}
+                </div>
+
+                <h3>${student.name}</h3>
+            </div>
+
+            <div class="student-info">
+                <div class="info-row">
+                    <span class="info-label">Age</span>
+                    <span class="info-value">${student.age}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">University</span>
+                    <span class="info-value">${student.university}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">GPA</span>
+                    <span class="info-value gpa">${student.gpa}</span>
+                </div>
+            </div>
+
+            <button class="delete-btn" onclick="deleteStudent(${student.id})">
+                Delete Student
+            </button>
+        `;
+
+        studentsContainer.appendChild(card);
+    });
+}
+
+function deleteStudent(id) {
+    students = students.filter(function(student) {
+        return student.id !== id;
+    });
+
+    displayStudents(students);
+}
+
+searchInput.addEventListener("input", function() {
+    const searchText = searchInput.value.toLowerCase().trim();
+
+    const filteredStudents = students.filter(function(student) {
+        return student.name.toLowerCase().includes(searchText);
+    });
+
+    displayStudents(filteredStudents);
+});
+</script>
+
+</body>
+</html>

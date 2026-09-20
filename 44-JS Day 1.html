@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .card {
+            width: 350px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <img id="profileImage" src="image.jpg">
+
+        <h1 id="name">Old Name</h1>
+
+        <p id="profession">Old Profession</p>
+
+        <p id="description">Old Description</p>
+
+        <button id="changeButton">Change Profile</button>
+
+    </div>
+
+    <script>
+        let image = document.getElementById("profileImage");
+        let name = document.getElementById("name");
+        let profession = document.getElementById("profession");
+        let description = document.getElementById("description");
+        let button = document.getElementById("changeButton");
+
+        button.addEventListener("click", function() {
+
+            image.src = "p image.jpg";
+
+            name.textContent = "Eman";
+
+            profession.textContent = "BS Artificial Intelligence Student";
+
+            description.textContent = "I am learning HTML, CSS and JavaScript.";
+
+            button.textContent = "Profile Updated";
+
+        });
+    </script>
+
+</body>
+</html>

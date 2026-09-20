@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 60px;
+            background: #f2f4f8;
+        }
+
+        .container {
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #count {
+            font-size: 50px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #increase {
+            background: green;
+            color: white;
+        }
+
+        #decrease {
+            background: red;
+            color: white;
+        }
+
+        #reset {
+            background: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Interactive Counter</h1>
+
+        <div id="count">0</div>
+
+        <button id="increase">Increase</button>
+        <button id="decrease">Decrease</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        let count = 0;
+
+        const countDisplay = document.getElementById("count");
+        const increaseButton = document.getElementById("increase");
+        const decreaseButton = document.getElementById("decrease");
+        const resetButton = document.getElementById("reset");
+
+        increaseButton.addEventListener("click", function() {
+            count++;
+            countDisplay.textContent = count;
+        });
+
+        decreaseButton.addEventListener("click", function() {
+            count--;
+            countDisplay.textContent = count;
+        });
+
+        resetButton.addEventListener("click", function() {
+            count = 0;
+            countDisplay.textContent = count;
+        });
+    </script>
+
+</body>
+</html>
